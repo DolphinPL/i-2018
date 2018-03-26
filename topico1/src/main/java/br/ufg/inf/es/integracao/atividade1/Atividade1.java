@@ -3,6 +3,7 @@ package br.ufg.inf.es.integracao.atividade1;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import 
 
 /**
  * Classe que recebe como único argumento um nome de arquivo e exibe os 4 primeiros
@@ -17,10 +18,7 @@ public class Atividade1 {
 
     public static void  main(String[] args) {
 
-        Scanner entrada = new Scanner(System.in);
-
-        System.out.println("Entre com o nome do arquivo:");
-        System.out.println(exibirHexa(entrada.nextLine()));
+        System.out.println(exibirHexa(args[0]));
 
     }
     
