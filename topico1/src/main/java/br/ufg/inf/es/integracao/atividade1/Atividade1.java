@@ -11,6 +11,21 @@ import java.io.IOException;
 public class Atividade1 {
 
     /**
+     * Método responsável pela entrada e exibição dos dados do programa.
+     */
+   
+
+    public static void  main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Entre com o nome do arquivo:");
+        System.out.println(exibirHexa(entrada.nextLine()));
+
+    }
+    
+    /**
+     * Método recebe o nome de um arquivo e retorna os 4 primeiros bytes do arquivo.
      * @param file entrada de uma String com o nome do arquivo.
      * @return os 4 primeiros bytes do arquivo.
      * @throws IOException caso o nome do arquivo esteja em branco.
