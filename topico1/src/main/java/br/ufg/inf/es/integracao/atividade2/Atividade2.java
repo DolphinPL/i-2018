@@ -13,12 +13,16 @@ public class Atividade2 {
      * Método responsável pela entrada e exibição dos dados do programa.
      */
     public static void  main(String[] args) {
-
-    	if (verificaArquivo(args[0])) {
-		    System.out.println("Arquivo é JPEG");
-    	} else {
-		    System.out.println("Não é arquivo JPEG");
-	    }
+    	
+    	try {
+    		if (verificaArquivo(args[0])) {
+    			System.out.println("Arquivo é JPEG");
+    		} else {
+    			System.out.println("Não é arquivo JPEG");
+    		}
+    	} catch (IOException e) {
+    		System.out.println(e);
+    	}
 
     }
 
