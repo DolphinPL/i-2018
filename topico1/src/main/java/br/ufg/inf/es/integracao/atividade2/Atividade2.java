@@ -10,6 +10,20 @@ import java.io.IOException;
 public class Atividade2 {
 
     /**
+     * Método responsável pela entrada e exibição dos dados do programa.
+     */
+    public static void  main(String[] args) {
+
+    	if (verificaArquivo(args[0])) {
+		    System.out.println("Arquivo é JPEG");
+    	} else {
+		    System.out.println("Não é arquivo JPEG");
+	    }
+
+    }
+
+    /**
+     * Método que recebe o nome de um arquivo e verifica se o mesmo é JPEG.
      * @param file no do arquivo.
      * @return True se o arquivo é JPEG ou False caso contrario.
      * @throws IOException caso o nome do arquivo esteja em branco.

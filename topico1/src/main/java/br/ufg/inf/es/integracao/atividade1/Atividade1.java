@@ -14,8 +14,6 @@ public class Atividade1 {
     /**
      * Método responsável pela entrada e exibição dos dados do programa.
      */
-   
-
     public static void  main(String[] args) {
 
         System.out.println(exibirHexa(args[0]));
