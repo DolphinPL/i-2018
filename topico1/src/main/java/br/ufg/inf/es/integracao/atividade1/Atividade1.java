@@ -12,6 +12,7 @@ public class Atividade1 {
 
     /**
      * Método responsável pela entrada e exibição dos dados do programa.
+     * @param args nome do arquivo a ser lido.
      */
     public static void  main(String[] args) {
 
@@ -21,7 +22,6 @@ public class Atividade1 {
     		System.out.println(e);
     	}
         
-
     }
     
     /**
@@ -38,8 +38,10 @@ public class Atividade1 {
 
 	FileInputStream arq = new FileInputStream(file);
 	DataInputStream arquivo = new DataInputStream(arq);
+	int aux = arquivo.readInt();
+	arquivo.close();
 
-	return Integer.parseInt(Integer.toHexString(arquivo.readInt()));
+	return Integer.parseInt(Integer.toHexString(aux));
 
     }
 
