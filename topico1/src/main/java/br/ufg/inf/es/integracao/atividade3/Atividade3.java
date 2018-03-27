@@ -11,19 +11,19 @@ import java.nio.file.Paths;
  */
 public class Atividade3 {
 	
-	/**
-	 *  Método responsável pela entrada e exibição dos dados do programa.
-	 * @param args nome do arquivo a ser lido.
-	 */
-	public static void  main(String[] args) {
+    /**
+     *  Método responsável pela entrada e exibição dos dados do programa.
+     * @param args nome do arquivo a ser lido.
+     */
+    public static void  main(String[] args) {
 	    	
-		try {
-	 		System.out.println(exibirArq(args[0]));
-	   	} catch (IOException e) {
-	   		System.out.println(e);
-	   	}
+	try {
+ 		System.out.println(exibirArq(args[0]));
+   	} catch (IOException e) {
+   		System.out.println(e);
+   	}
 	
-	}
+    }
 
     /**
      * Método que faz a leitura de um arquivo.
@@ -37,10 +37,10 @@ public class Atividade3 {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
     	}
 
-        Charset uft8 = Charset.forName("UFT-8");
+        Charset utf8 = Charset.forName("UTF-8");
         Path arquivo = Paths.get(file);
         StringBuilder arq = new StringBuilder();
-        for (String linha : Files.readAllLines(arquivo, uft8)) {
+        for (String linha : Files.readAllLines(arquivo, utf8)) {
             arq.append(linha)
                     .append("\n");
         }
