@@ -36,7 +36,7 @@ public class Atividade5 {
             throw new IllegalArgumentException("Ops, nome de arquivo binário é invalido!");
     	}
 		
-		Charset utf8 = Charset.forName("UTF-8");
+	Charset utf8 = Charset.forName("UTF-8");
         Path file = Paths.get(arqText);
         
         FileOutputStream tmpBinary = new FileOutputStream(arqBinary);
