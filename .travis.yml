@@ -1,1 +1,7 @@
 language: java
+
+addons:
+  sonarcloud:
+    organization: "antoni-s-github"
+    token:
+      secure: $SONAR_TOKEN
