@@ -101,7 +101,7 @@
     <build>
 
         <!-- Define o nome do arquivo a ser gerado (.jar é acrescentada) -->
-        <finalName>Exemplo</finalName>
+        <finalName>i-2018</finalName>
 
         <plugins>
 
@@ -111,6 +111,11 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.3.0.603</version>
             </plugin>
+                 
+                 mvn sonar:sonar \
+                  -Dsonar.organization=antoni-s-github \
+                  -Dsonar.host.url=https://sonarcloud.io \
+                  -Dsonar.login=66bd7be74a905e85d36e4773860a19f72af2dbf8
 
             <!-- FindBugs Static Analysis -->
             <!-- mvn compile; mvn findbugs:findbugs; mvn findbugs:gui -->
