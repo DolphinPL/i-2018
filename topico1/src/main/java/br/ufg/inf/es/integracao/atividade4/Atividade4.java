@@ -32,7 +32,7 @@ public class Atividade4 {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
     	}
 		
-	if (diretory.dados(null) || diretory.dados("") || diretory.dados(" ")) {
+	if (dados.equals(null) || dados.equals("") || dados.equals(" ")) {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
     	}
     	
