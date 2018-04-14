@@ -31,6 +31,10 @@ public class Atividade4 {
     	if (diretory.equals(null) || diretory.equals("") || diretory.equals(" ")) {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
     	}
+		
+	if (diretory.dados(null) || diretory.dados("") || diretory.dados(" ")) {
+            throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
+    	}
     	
     	PrintWriter pw = new PrintWriter(diretory, "UTF-8");
     	pw.write(dados);
