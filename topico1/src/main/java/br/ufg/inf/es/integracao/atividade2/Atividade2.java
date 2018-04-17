@@ -38,19 +38,19 @@ public class Atividade2 {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
         }
         
-        byte[] magico = new byte[4];
+        byte[] byteArray = new byte[4];
 	    
         RandomAccessFile arquivo = new RandomAccessFile(file, "r");
         arquivo.seek(0);
-        arquivo.read(magico, 0, 2);
+        arquivo.read(byteArray, 0, 2);
         arquivo.seek(arquivo.length() - 2);
-        arquivo.read(magico, 2, 2);
+        arquivo.read(byteArray, 2, 2);
         arquivo.close();
 	String inicio = Integer.toHexString(byteArray[0] & 0xFF) + Integer.toHexString(byteArray[1] & 0xFF);
 	String fim = Integer.toHexString(byteArray[2] & 0xFF) + Integer.toHexString(byteArray[3] & 0xFF);
 	    
         
-        if (minicio.equals("ffd8") && fim.equals("ffd9")) {
+        if (inicio.equals("ffd8") && fim.equals("ffd9")) {
         	return true;
         } else {
 	        return false;

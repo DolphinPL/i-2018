@@ -12,11 +12,11 @@ public class Atividade8 {
 
 	/**
 	 * Método responsável pela interação do programa.
-	 * @param args[0] nome do arquivo binário e args[1] número da linha a ser exibida.
+	 * @param args nome do arquivo binário e args[1] número da linha a ser exibida.
 	 */
 	public static void main(String[] args) {
 		try {
-	 		viewToTxt(args[0]);
+	 		viewToTxt(args[0], Integer.parseInt(args[1]));
 	   	} catch (IOException e) {
 	   		System.out.println(e);
 	   	}
@@ -25,7 +25,6 @@ public class Atividade8 {
 	/**
 	* Método que exibe uma linha especifica de um arquivo binário em forma de texto.
 	* @param file nome do arquivo binário a ser exibido.
-	* @param line número da linha a ser exibida.
 	* @throws IOException caso o nome do arquivo esteja em branco.
 	*/
 	public static void viewToTxt(String file, int lineExpecf) throws IOException {
@@ -58,7 +57,7 @@ public class Atividade8 {
 				amountSkip = ByteBuffer.wrap(intByte).getInt();
 				tmpfile.skipBytes(amountSkip);
 			}
-			
+
 		}
 	}
 }

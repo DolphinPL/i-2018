@@ -1,9 +1,11 @@
 package br.ufg.inf.es.integracao.serializacao.atividade1;
 
+import java.io.Serializable;
+
 /**
  * Classe responsável pelo dados de uma turma.
  */
-public class Turma {
+public class Turma implements Serializable {
 
     private String nome;
     private String professor;

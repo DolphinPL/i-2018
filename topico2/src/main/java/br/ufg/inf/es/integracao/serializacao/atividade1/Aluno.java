@@ -1,21 +1,19 @@
 package br.ufg.inf.es.integracao.serializacao.atividade1;
 
-import java.io.Serializable;
-
 /**
  * Classe responsável pelo dados de um aluno.
  */
-public class Aluno implements Serializable {
+public class Aluno {
 
     private String nome;
-    private int matricula;
+    private String matricula;
 
     /**
      * método construtor.
      * @param nome nome de um aluno.
      * @param matricula matricula de um aluno.
      */
-    public Aluno(String nome, int matricula) {
+    public Aluno(String nome, String matricula) {
         super();
         this.nome = nome;
         this.matricula = matricula;
@@ -33,7 +31,7 @@ public class Aluno implements Serializable {
      * método responsável por exibir a matricula de um aluno.
      * @return matricula de um aluno.
      */
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
