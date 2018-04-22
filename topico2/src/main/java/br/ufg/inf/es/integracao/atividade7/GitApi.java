@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 /**
  * Classe que salva a imagen de perfil do gitHub.
  */
-public class GitApi. {
+public class GitApi {
 
   /**
   * Método responsável por buscar e armazenar a foto de perfil de um usuário no git.
