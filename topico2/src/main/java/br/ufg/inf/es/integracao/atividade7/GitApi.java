@@ -15,8 +15,11 @@ import java.nio.file.Paths;
 /**
  * Classe que salva a imagen de perfil do gitHub.
  */
-public class Exercicio7 {
+public class GitApi. {
 
+  /**
+  * Método responsável por buscar e armazenar a foto de perfil de um usuário no git.
+  */
   public void buscaArmazenaAvatar() {
     try {
       URL url = new URL(https://api.github.com/users/kyriosdata);
