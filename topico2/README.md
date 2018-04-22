@@ -1,4 +1,4 @@
-<h1> JSON (exercícios)<h1>
+<h1>JSON (exercícios)
 
 **1. Quais são os valores (“literais”) admitidos em JSON? Não confunda com aqueles escritos entre aspas (sequências de caracteres).**
 >true, false, null e numbers.
