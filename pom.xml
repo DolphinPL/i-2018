@@ -20,7 +20,7 @@
 
     <groupId>com.github.antoni-s</groupId>
     <artifactId>i-2018</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
 
     <name>com.github.antoni-s:i-2018</name>
@@ -67,6 +67,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <modules>
+      <module>topico1</module>
+      <module>topico2</module>
+    </modules>
 
     <dependencies>
 

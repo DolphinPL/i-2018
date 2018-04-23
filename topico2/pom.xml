@@ -2,12 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>com.github.antoni-s</groupId>
+		<artifactId>i-2018</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>topico2</groupId>
+    <groupId>com.github.antoni-s</groupId>
     <artifactId>topico2</artifactId>
     <version>1.0-SNAPSHOT</version>
-         
+
+	<name>topico2</name>         
          
       <dependencies>
         <dependency>

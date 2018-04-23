@@ -2,6 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+    <parent>
+	<groupId>com.github.antoni-s</groupId>
+	<artifactId>i-2018</artifactId>
+	<version>1.0.0</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <!-- mvn javadoc:javadoc
@@ -19,11 +27,11 @@
     -->
 
     <groupId>com.github.antoni-s</groupId>
-    <artifactId>i-2018</artifactId>
+    <artifactId>topico1</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
-    <name>com.github.antoni-s:i-2018</name>
+    <name>topico1</name>
 
     <description>
         Projeto prático da disciplina de Integração de Aplicação 2018/1.
