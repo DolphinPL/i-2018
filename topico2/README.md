@@ -16,7 +16,7 @@
 	"str":"a"
 }
 </pre>
->nill  não é um valor literal e não se encontra entre aspas.
+>nil não é um valor literal e não se encontra entre aspas.
 ---
 **4. Qual seria um possível arquivo JSON contendo dados correspondentes a uma instância de um objeto da classe Bicycle (disponível [aqui](https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html))?**
 >{   
