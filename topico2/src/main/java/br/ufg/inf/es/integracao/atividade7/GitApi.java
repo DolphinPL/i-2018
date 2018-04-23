@@ -38,10 +38,10 @@ public class GitApi {
         tmp.append(line + "\n");
       }
 
-      String tmp = tmp.toString();
+      String aux = tmp.toString();
 
       JsonParser parser = new JsonParser();
-      JsonObject gitUserJSON = parser.parse(tmp).getAsJsonObject();
+      JsonObject gitUserJSON = parser.parse(aux).getAsJsonObject();
       String avatar = gitUserJSON.get("avatar_url").toString().replaceAll("\"", "");
       String user= gitUserJSON.get("login").toString().replaceAll("\"", "");
 
