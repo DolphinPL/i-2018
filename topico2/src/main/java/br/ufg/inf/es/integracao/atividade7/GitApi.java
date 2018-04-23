@@ -22,7 +22,7 @@ public class GitApi {
   */
   public void buscaArmazenaAvatar() {
     try {
-      URL url = new URL(https://api.github.com/users/kyriosdata);
+      URL url = new URL("https://github.com/users/kyriosdata");
       HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
       connection.setRequestMethod("GET");
