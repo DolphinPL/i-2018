@@ -21,6 +21,8 @@ public class GitApi {
   * Método responsável por buscar e armazenar a foto de perfil de um usuário no git.
   */
   public void buscaArmazenaAvatar() {
+
+	BufferedReader reader = null;
     try {
       URL url = new URL("https://github.com/users/kyriosdata");
       HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -51,8 +53,10 @@ public class GitApi {
     } catch (Exception e) {
       e.printStackTrace();
     } finally {
-      reader.close();
-    }
+      try {
+        if (reader != null) reader.close();
+	} catch (Exception exp) {}    
+}
   }
 
 }
