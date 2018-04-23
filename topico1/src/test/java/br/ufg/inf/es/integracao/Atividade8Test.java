@@ -17,7 +17,7 @@ public class Atividade8Test {
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoSemNomeOneGeraExcecao() throws Exception {
-        Atividade8.viewToTxt(, 2);
+        Atividade8.viewToTxt("", 2);
     }
   
 }

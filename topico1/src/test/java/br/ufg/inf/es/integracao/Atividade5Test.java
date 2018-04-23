@@ -17,7 +17,7 @@ public class Atividade5Test {
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoSemNomeOneGeraExcecao() throws Exception {
-        Atividade5.convertsToBinary(, "/topico1/test.bat");
+        Atividade5.convertsToBinary("", "/topico1/test.bat");
     }
     
     @Test(expected = IllegalArgumentException.class)
@@ -32,7 +32,7 @@ public class Atividade5Test {
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoSemNomeTwoGeraExcecao() throws Exception {
-        Atividade5.convertsToBinary("/topico1/test.txt", );
+        Atividade5.convertsToBinary("/topico1/test.txt", "");
     }
     
 }

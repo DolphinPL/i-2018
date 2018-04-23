@@ -17,7 +17,7 @@ public class Atividade3Test {
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoSemNome() throws Exception {
-        Atividade3.exibirArq();
+        Atividade3.exibirArq("");
     }
     
 }

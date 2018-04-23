@@ -17,7 +17,7 @@ public class Atividade4Test {
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoSemNomeOneGeraExcecao() throws Exception {
-        Atividade4.persisteDados(, "/topico1/test.bat");
+        Atividade4.persisteDados("", "/topico1/test.bat");
     }
     
     @Test(expected = IllegalArgumentException.class)
@@ -32,7 +32,7 @@ public class Atividade4Test {
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoSemNomeTwoGeraExcecao() throws Exception {
-        Atividade4.persisteDados("/topico1/test.txt", );
+        Atividade4.persisteDados("/topico1/test.txt", "");
     }
     
 }
