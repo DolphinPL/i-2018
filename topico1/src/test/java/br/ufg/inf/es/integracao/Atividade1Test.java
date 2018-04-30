@@ -7,6 +7,6 @@ public class Atividade1Test {
 
     @Test(expected = IllegalArgumentException.class)
     public void arquivoInexistenteGeraExcecao() throws Exception {
-        Atividade1.exibirHexa("");
+        Atividade1.retornaHexa("");
     }
 }
