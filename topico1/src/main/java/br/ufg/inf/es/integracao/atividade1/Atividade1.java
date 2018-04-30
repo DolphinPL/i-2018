@@ -18,7 +18,7 @@ public class Atividade1 {
     public static void main(String[] args) {
 
         try {
-            System.out.println(exibirHexa(args[0]));
+            System.out.println(retornaHexa(args[0]));
         } catch (IOException e) {
             System.out.println(e);
         }
