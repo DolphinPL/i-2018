@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2016.
+ * Antonio Arlis Santos da Silva
+ * Creative Commons Attribution 4.0 International License.
+ */
+
 package br.ufg.inf.es.integracao.atividade1;
 
 import java.io.DataInputStream;
