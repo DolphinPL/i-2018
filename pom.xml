@@ -71,6 +71,7 @@
     <modules>
       <module>topico1</module>
       <module>topico2</module>
+      <module>topico3</module>
     </modules>
 
     <dependencies>
