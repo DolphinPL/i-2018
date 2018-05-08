@@ -6,9 +6,12 @@
 
 package br.ufg.inf.es.integracao.atividade1;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Classe de objetos aluno.
  */
+@XmlRootElement(name = "aluno")
 public class Aluno {
 
     private String nome;

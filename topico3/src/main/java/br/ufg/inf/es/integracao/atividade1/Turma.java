@@ -6,13 +6,20 @@
 
 package br.ufg.inf.es.integracao.atividade1;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.ArrayList;
 
 /**
  * Classe de objetos turma.
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Turma {
 
+    @XmlElementWrapper(name = "alunos")
+    @XmlElement(name = "aluno")
     private ArrayList<Aluno> alunos;
 
     /**
