@@ -47,8 +47,4 @@ public class Turma {
         return getAlunos() != null ? getAlunos().equals(turma.getAlunos()) : turma.getAlunos() == null;
     }
 
-    @Override
-    public int hashCode() {
-        return getAlunos() != null ? getAlunos().hashCode() : 0;
-    }
 }

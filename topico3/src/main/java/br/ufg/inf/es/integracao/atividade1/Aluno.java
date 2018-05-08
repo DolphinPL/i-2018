@@ -60,10 +60,4 @@ public class Aluno {
         return getEmail() != null ? getEmail().equals(aluno.getEmail()) : aluno.getEmail() == null;
     }
 
-    @Override
-    public int hashCode() {
-        int result = getNome() != null ? getNome().hashCode() : 0;
-        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        return result;
-    }
 }
