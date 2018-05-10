@@ -40,17 +40,31 @@ public class Atividade1 {
      */
     public static int retornaHexa(String file) throws IOException {
 
-        if (file.equals(null) || file.trim().isEmpty()) {
+
+        if(nomeValido(file)) {
+            FileInputStream arq = new FileInputStream(file);
+            DataInputStream arquivo = new DataInputStream(arq);
+            int aux = arquivo.readInt();
+            arquivo.close();
+
+            return Integer.parseInt(Integer.toHexString(aux));
+        } else {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
         }
 
-        FileInputStream arq = new FileInputStream(file);
-        DataInputStream arquivo = new DataInputStream(arq);
-        int aux = arquivo.readInt();
-        arquivo.close();
+    }
 
-        return Integer.parseInt(Integer.toHexString(aux));
+    /**
+     * Método que verifica se o nome de um arquivo é valido.
+     * @param file Nome do arquivo.
+     * @return True nome valido.
+     */
+    private static boolean nomeValido(String file) {
+        if (file.equals(null) || file.trim().isEmpty()) {
+            return false;
+        }
 
+        return true;
     }
 
 }

@@ -50,27 +50,37 @@ public class Atividade5 {
 	*/
 	public static void convertsToBinary(String arqText, String arqBinary) throws IOException {
 
-		if (arqText.equals(null) || arqText.equals("") || arqText.equals(" ")) {
-    			throw new IllegalArgumentException("Ops, nome de arquivo texto é invalido!");
-    		}
+		if (nomeValido(arqText) && nomeValido(arqBinary)) {
+			Charset utf8 = Charset.forName("UTF-8");
+			Path file = Paths.get(arqText);
 
-		if (arqBinary.equals(null) || arqBinary.equals("") || arqBinary.equals(" ")) {
-    			throw new IllegalArgumentException("Ops, nome de arquivo binário é invalido!");
-    		}
+			FileOutputStream tmpBinary = new FileOutputStream(arqBinary);
+			DataOutputStream archive = new DataOutputStream(tmpBinary);
 
-		Charset utf8 = Charset.forName("UTF-8");
-    		Path file = Paths.get(arqText);
+			for (String line : Files.readAllLines(file, utf8)) {
+				byte[] lineByte = line.getBytes(utf8);
+				archive.writeInt(line.length());
+				archive.write(lineByte, 0, line.length());
+			}
 
-    		FileOutputStream tmpBinary = new FileOutputStream(arqBinary);
-    		DataOutputStream archive = new DataOutputStream(tmpBinary);
+			archive.close();
+		} else {
+			throw new IllegalArgumentException("Ops, nome de arquivo binário é invalido!");
+		}
+	}
 
-    		for (String line : Files.readAllLines(file, utf8)) {
-			byte[] lineByte = line.getBytes(utf8);
-			archive.writeInt(line.length());
-			archive.write(lineByte, 0, line.length());
-    		}
+	/**
+	 * Método que verifica se o nome de um arquivo é valido.
+	 * @param file Nome do arquivo.
+	 * @return True nome valido.
+	 */
+	private static boolean nomeValido(String file) {
 
-    		archive.close();
+		if (file.equals(null) || file.equals("") || file.equals(" ")) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

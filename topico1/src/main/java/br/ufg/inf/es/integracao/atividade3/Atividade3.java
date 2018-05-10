@@ -24,7 +24,7 @@ public class Atividade3 {
     public static void  main(String[] args) {
 	    	
 	try {
- 		System.out.println(exibirArq(args[0]));
+ 		System.out.println(recuperarArq(args[0]));
    	} catch (IOException e) {
    		System.out.println(e);
    	}
@@ -37,21 +37,35 @@ public class Atividade3 {
      * @return conteúdo do arquivo.
      * @throws IOException nome do arquivo em branco.
      */
-    public static String exibirArq (String file) throws IOException {
+    public static String recuperarArq (String file) throws IOException {
 
-    	if (file.equals(null) || file.equals("") || file.equals(" ")) {
+    	if (nomeValido(file)) {
+            Charset utf8 = Charset.forName("UTF-8");
+            Path arquivo = Paths.get(file);
+            StringBuilder arq = new StringBuilder();
+            for (String linha : Files.readAllLines(arquivo, utf8)) {
+                arq.append(linha)
+                        .append("\n");
+            }
+
+            return arq.toString();
+        } else {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
-    	}
-
-        Charset utf8 = Charset.forName("UTF-8");
-        Path arquivo = Paths.get(file);
-        StringBuilder arq = new StringBuilder();
-        for (String linha : Files.readAllLines(arquivo, utf8)) {
-            arq.append(linha)
-                    .append("\n");
         }
+    }
 
-        return arq.toString();
+    /**
+     * Método que verifica se o nome de um arquivo é valido.
+     * @param file Nome do arquivo.
+     * @return True nome valido.
+     */
+    private static boolean nomeValido(String file) {
+
+        if (file.equals(null) || file.equals("") || file.equals(" ")) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
