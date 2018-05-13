@@ -38,6 +38,9 @@ public class GitApi {
         }
     }
 
+    /**
+    * Método de integração com outros métodos.
+    */
     private static void imagemGit(String arg) throws IOException {
 
         InputStream url = getUrl(arg);
