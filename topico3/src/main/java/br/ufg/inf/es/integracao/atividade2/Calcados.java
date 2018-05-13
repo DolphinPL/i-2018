@@ -5,10 +5,12 @@
  */
 
 package br.ufg.inf.es.integracao.atividade2;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by aluno on 07/05/18.
  */
+@XmlRootElement(name = "calcado")
 public class Calcados {
 
     private String nome;
