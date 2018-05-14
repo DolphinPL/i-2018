@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2018.
+ * Antonio Arlis Santos da Silva
+ * Creative Commons Attribution 4.0 International License.
+ */
+
 package br.ufg.inf.es.integracao.atividade2;
 
 import java.io.IOException;
@@ -34,26 +40,41 @@ public class Atividade2 {
      */
     public static boolean verificaArquivo(String file) throws IOException {
 
-        if (file.equals(null) || file.equals("") || file.equals(" ")) {
+        if (nomeValido(file)) {
+
+            byte[] byteArray = new byte[4];
+
+            RandomAccessFile arquivo = new RandomAccessFile(file, "r");
+            arquivo.seek(0);
+            arquivo.read(byteArray, 0, 2);
+            arquivo.seek(arquivo.length() - 2);
+            arquivo.read(byteArray, 2, 2);
+            arquivo.close();
+            String inicio = Integer.toHexString(byteArray[0] & 0xFF) + Integer.toHexString(byteArray[1] & 0xFF);
+            String fim = Integer.toHexString(byteArray[2] & 0xFF) + Integer.toHexString(byteArray[3] & 0xFF);
+
+
+            if (inicio.equals("ffd8") && fim.equals("ffd9")) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
         }
-        
-        byte[] byteArray = new byte[4];
-	    
-        RandomAccessFile arquivo = new RandomAccessFile(file, "r");
-        arquivo.seek(0);
-        arquivo.read(byteArray, 0, 2);
-        arquivo.seek(arquivo.length() - 2);
-        arquivo.read(byteArray, 2, 2);
-        arquivo.close();
-	String inicio = Integer.toHexString(byteArray[0] & 0xFF) + Integer.toHexString(byteArray[1] & 0xFF);
-	String fim = Integer.toHexString(byteArray[2] & 0xFF) + Integer.toHexString(byteArray[3] & 0xFF);
-	    
-        
-        if (inicio.equals("ffd8") && fim.equals("ffd9")) {
-        	return true;
+    }
+
+    /**
+     * Método que verifica se o nome de um arquivo é valido.
+     * @param file Nome do arquivo.
+     * @return True nome valido.
+     */
+    private static boolean nomeValido(String file) {
+
+        if (file.equals(null) || file.equals("") || file.equals(" ")) {
+            return false;
         } else {
-	        return false;
+            return true;
         }
     }
 

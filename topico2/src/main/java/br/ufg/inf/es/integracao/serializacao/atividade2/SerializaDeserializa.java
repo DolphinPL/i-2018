@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2018.
+ * Antonio Arlis Santos da Silva
+ * Creative Commons Attribution 4.0 International License.
+ */
+
 package br.ufg.inf.es.integracao.serializacao.atividade2;
 
 import java.io.*;
@@ -52,16 +58,30 @@ public class SerializaDeserializa {
      */
     public static Funcionario deserializar(String nomeArquivo) throws IOException, ClassNotFoundException {
 
-        if (nomeArquivo.equals(null) || nomeArquivo.trim().isEmpty()) {
+        if (!nomeValido(nomeArquivo)) {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
+        } else {
+
+            FileInputStream inFile = new FileInputStream(nomeArquivo);
+            ObjectInputStream d = new ObjectInputStream(inFile);
+            Funcionario objeto = (Funcionario) d.readObject();
+
+            d.close();
+            return objeto;
+        }
+    }
+
+    /**
+     * Método que verifica se o nome de um arquivo é valido.
+     * @param file Nome do arquivo.
+     * @return True nome valido.
+     */
+    private static boolean nomeValido(String file) {
+        if (file.equals(null) || file.trim().isEmpty()) {
+            return false;
         }
 
-        FileInputStream inFile = new FileInputStream(nomeArquivo);
-        ObjectInputStream d = new ObjectInputStream(inFile);
-        Funcionario objeto = (Funcionario)d.readObject();
-
-        d.close();
-        return objeto;
+        return true;
     }
 
 }

@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2018.
+ * Antonio Arlis Santos da Silva
+ * Creative Commons Attribution 4.0 International License.
+ */
+
 package br.ufg.inf.es.integracao.atividade8;
 
 import java.io.DataInputStream;
@@ -16,7 +22,7 @@ public class Atividade8 {
 	 */
 	public static void main(String[] args) {
 		try {
-	 		viewToTxt(args[0], Integer.parseInt(args[1]));
+            System.out.println(search(args[0], Integer.parseInt(args[1])));
 	   	} catch (IOException e) {
 	   		System.out.println(e);
 	   	}
@@ -27,37 +33,48 @@ public class Atividade8 {
 	* @param file nome do arquivo binário a ser exibido.
 	* @throws IOException caso o nome do arquivo esteja em branco.
 	*/
-	public static void viewToTxt(String file, int lineExpecf) throws IOException {
+	public static String search(String file, int lineExpecf) throws IOException {
 
-		if (file.equals(null) || file.equals("") || file.equals(" ")) {
-    			throw new IllegalArgumentException("Ops, nome de arquivo texto é invalido!");
-    		}
+		if (nomeValido(file)) {
+			FileInputStream tmp = new FileInputStream(file);
+			DataInputStream tmpfile = new DataInputStream(tmp);
+			byte[] intByte = new byte[4];
+			int Index;
+			int lineByte;
+			int amountSkip = 0;
 
-		FileInputStream tmp = new FileInputStream(file);
-		DataInputStream tmpfile = new DataInputStream(tmp);
-		byte[] intByte = new byte[4];
-		int Index;
-		int lineByte;
-		int amountSkip = 0;
+			while (tmpfile.read(intByte) != -1) {
+				Index = ByteBuffer.wrap(intByte).getInt();
 
-		while ((Index = tmpfile.read(intByte)) != -1) {
-			Index = ByteBuffer.wrap(intByte).getInt();
+				if (Index == lineExpecf) {
+					lineByte = ByteBuffer.wrap(intByte).getInt();
 
-			if (Index == lineExpecf) {
-				lineByte = tmpfile.read(intByte);
-				lineByte = ByteBuffer.wrap(intByte).getInt();
+					byte[] byteArray = new byte[lineByte];
+					tmpfile.read(byteArray);
 
-				byte[] byteArray = new byte[lineByte];
-				tmpfile.read(byteArray);
-
-				String str = new String(byteArray, "UTF-8");
-				System.out.println(str);
-			} else {
-				amountSkip = tmpfile.read(intByte);
+					String str = new String(byteArray, "UTF-8");
+					return str;
+				}
 				amountSkip = ByteBuffer.wrap(intByte).getInt();
 				tmpfile.skipBytes(amountSkip);
 			}
+		} else {
+			throw new IllegalArgumentException("Ops, nome de arquivo texto é invalido!");
+		}
+		return "Não há a linha desejada";
+	}
 
+	/**
+	 * Método que verifica se o nome de um arquivo é valido.
+	 * @param file Nome do arquivo.
+	 * @return True nome valido.
+	 */
+	private static boolean nomeValido(String file) {
+
+		if (file.equals(null) || file.equals("") || file.equals(" ")) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 }
