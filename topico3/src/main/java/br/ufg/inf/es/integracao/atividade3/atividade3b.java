@@ -4,35 +4,35 @@
  * Creative Commons Attribution 4.0 International License.
  */
 
-package br.ufg.inf.es.integracao.atividade2;
+package br.ufg.inf.es.integracao.atividade3;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
-
 
 /**
- * Created by aluno on 14/05/18.
+ * Classe que dado um documento XML, armazenado em um arquivo, “recupera” a instância da classe Turma nele serializado.
  */
-public class Atividade2 {
+public class atividade3b {
 
+    /**
+     * Metodo principal de execução do programa.
+     * @param args nome do arquivo xml.
+     */
     public static void main(String[] args) {
-        Sapataria sapataria = new Sapataria();
+
         XMLStreamReader arquivo = null;
         XmlMapper mapper = new XmlMapper();
+        Turma turma;
 
         try {
             arquivo = recuperarDados(args[0]);
-            crarregarObjetos(arquivo, mapper, sapataria);
+            arquivo.next();
+            turma = obterObjeto(arquivo, mapper);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (XMLStreamException e) {
@@ -40,26 +40,17 @@ public class Atividade2 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
     /**
-     * Método que carregar os objetos para disponibiliza-los.
+     * Método que criar um objeto apartir dos dados recuperados.
      */
-    private static void crarregarObjetos(XMLStreamReader arquivo, XmlMapper mapper, Sapataria sapataria) throws
-            XMLStreamException, IOException {
-        int aux = arquivo.next();
-        while (aux != XMLStreamConstants.END_DOCUMENT) {
-            if (aux == XMLStreamConstants.START_ELEMENT) {
-                String calcados = arquivo.getLocalName();
-                if (calcados.equals("tenis")) {
-                    MappingIterator<Tenis> tenis = mapper.readValues((JsonParser) arquivo, Tenis.class);
-                    sapataria.setTenis((List<Tenis>) tenis);
-                } else {
-                    MappingIterator<Sapatos> sapatos = mapper.readValues((JsonParser) arquivo, Sapatos.class);
-                    sapataria.setSapatos((List<Sapatos>) sapatos);
-                }
-            }
-        }
+    private static Turma obterObjeto(XMLStreamReader arquivo, XmlMapper mapper) throws XMLStreamException, IOException {
+        arquivo.next();
+
+        return mapper.readValue(arquivo, Turma.class);
     }
 
     /**
@@ -89,3 +80,4 @@ public class Atividade2 {
     }
 
 }
+

@@ -6,30 +6,31 @@
 
 package br.ufg.inf.es.integracao.atividade2;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 /**
- * Created by aluno on 07/05/18.
+ * Classe que cria uma instancia de Tenis.
  */
 public class Tenis extends Calcados {
 
     private String esporte;
 
+    /**
+     * Método de acesso ao atributo esporte.
+     * @return dados do atributo esporte.
+     */
     public String getEsporte() {
         return esporte;
     }
 
+    /**
+     * Método de acesso ao atributo esporte.
+     */
     public void setEsporte(String esporte) {
         this.esporte = esporte;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Tenis)) return false;
-        if (!super.equals(o)) return false;
-
-        Tenis tenis = (Tenis) o;
-
-        return esporte != null ? esporte.equals(tenis.esporte) : tenis.esporte == null;
     }
 
 }
