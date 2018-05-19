@@ -48,7 +48,7 @@ public class Atividade5 {
 	*após a conversão.
 	* @throws IOException caso o nome do arquivo esteja em branco.
 	*/
-	public static void convertsToBinary(String arqText, String arqBinary) throws IOException {
+	public static DataOutputStream convertsToBinary(String arqText, String arqBinary) throws IOException {
 
 		if (nomeValido(arqText) && nomeValido(arqBinary)) {
 			Charset utf8 = Charset.forName("UTF-8");
@@ -64,6 +64,7 @@ public class Atividade5 {
 			}
 
 			archive.close();
+			return archive;
 		} else {
 			throw new IllegalArgumentException("Ops, nome de arquivo binário é invalido!");
 		}

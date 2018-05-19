@@ -16,11 +16,10 @@ public class Atividade4 {
 	
 	/**
 	 * Método responsável pela interação do programa.
-	 * @param args[0] nome do arquivo, args[1] dados a serem persistidos.
 	 */
 	public static void main(String[] args) {
 		try {
-	 		persisteDados(args[0], args[1]);
+	 		PrintWriter arq = persisteDados(args[0], args[1]);
 	   	} catch (IOException e) {
 	   		System.out.println(e);
 	   	}
@@ -32,12 +31,13 @@ public class Atividade4 {
 	 * @param dados dados a serem persistidos.
 	 * @throws IOException caso o nome do arquivo esteja em branco.
 	 */
-	public static void persisteDados(String diretory, String dados) throws IOException {
+	public static PrintWriter persisteDados(String diretory, String dados) throws IOException {
 
     	if (nomeValido(diretory) && nomeValido(dados)) {
 			PrintWriter pw = new PrintWriter(diretory, "UTF-8");
 			pw.write(dados);
 			pw.close();
+			return pw;
 		} else {
 			throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
 		}
