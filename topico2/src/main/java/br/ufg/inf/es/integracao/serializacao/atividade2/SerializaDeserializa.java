@@ -21,7 +21,7 @@ public class SerializaDeserializa {
         try {
             ByteArrayOutputStream byt = new ByteArrayOutputStream();
             Funcionario funcionario = new Funcionario("Jonelson", "1234");
-            serializar(funcionario, byt);
+            byte[] bytes = serializar(funcionario);
             Funcionario funcionarios = deserializar(args[2]);
             System.out.println(funcionarios.getMatricula());
             System.out.println(funcionarios.getNome());
@@ -35,17 +35,19 @@ public class SerializaDeserializa {
     /**
      * Método que serializar um objeto.
      * @param objeto objeto a ser serializado.
-     * @param outputStream Arrey de bytes.
      * @throws IOException caso o nome do arquivo seja invalido.
      */
-    public static boolean serializar(Object objeto, ByteArrayOutputStream outputStream) throws IOException {
+    public static byte[] serializar(Object objeto) throws IOException {
 
-        ObjectOutputStream objectOut = new ObjectOutputStream(new BufferedOutputStream(outputStream));
-        objectOut.writeObject(objeto);
-        objectOut.close();
+        ByteArrayOutputStream aux = new ByteArrayOutputStream();
+        ObjectOutputStream objAux = new ObjectOutputStream(aux);
 
-        return true;
+        objAux.writeObject(objeto);
+        objAux.close();
 
+        byte[] byteArray = aux.toByteArray();
+
+        return byteArray;
 
     }
 
