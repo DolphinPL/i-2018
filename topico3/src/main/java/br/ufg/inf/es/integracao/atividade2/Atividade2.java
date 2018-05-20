@@ -52,11 +52,11 @@ public class Atividade2 {
             if (aux == XMLStreamConstants.START_ELEMENT) {
                 String calcados = arquivo.getLocalName();
                 if (calcados.equals("tenis")) {
-                    MappingIterator<Tenis> tenis = mapper.readValues((JsonParser) arquivo, Tenis.class);
-                    sapataria.setTenis((List<Tenis>) tenis);
+                    Tenis tenis = mapper.readValue(arquivo, Tenis.class);
+                    sapataria.setTenis(tenis);
                 } else {
-                    MappingIterator<Sapatos> sapatos = mapper.readValues((JsonParser) arquivo, Sapatos.class);
-                    sapataria.setSapatos((List<Sapatos>) sapatos);
+                    Sapatos sapatos = mapper.readValue(arquivo, Sapatos.class);
+                    sapataria.setSapatos(sapatos);
                 }
             }
         }
@@ -69,7 +69,8 @@ public class Atividade2 {
         if (nomeValido(directory)) {
             FileInputStream aux = new FileInputStream(directory);
             XMLInputFactory factory = XMLInputFactory.newFactory();
-            return factory.createXMLStreamReader(aux);
+            XMLStreamReader arquivo = factory.createXMLStreamReader(aux);
+            return arquivo;
         } else {
             throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
         }

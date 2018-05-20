@@ -46,8 +46,8 @@ public class Turma {
      * Método de acesso ao atributo estudante.
      * @param estudantes dados dos estudantes.
      */
-    public void setEstudantes(List<Estudante> estudantes) {
-        this.estudantes = estudantes;
+    public void setEstudantes(Estudante estudantes) {
+        this.estudantes.add(estudantes);
     }
 
 }

@@ -26,8 +26,8 @@ public class Sapataria {
     /**
      * Método de acesso ao atributo Sapato.
      */
-    public void setSapatos(List<Sapatos> sapatos) {
-        this.sapatos = sapatos;
+    public void setSapatos(Sapatos sapatos) {
+        this.sapatos.add(sapatos);
     }
 
     /**
@@ -40,7 +40,7 @@ public class Sapataria {
     /**
      * Método de acesso ao atributo Tenis.
      */
-    public void setTenis(List<Tenis> tenis) {
-        this.tenis = tenis;
+    public void setTenis(Tenis tenis) {
+        this.tenis.add(tenis);
     }
 }

@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe de objetos turma.
@@ -20,31 +20,21 @@ public class Turma {
 
     @XmlElementWrapper(name = "alunos")
     @XmlElement(name = "aluno")
-    private ArrayList<Aluno> alunos;
+    private List<Aluno> alunos;
 
     /**
      * Método responsável por dar acesso ao ArrayList alunos.
      * @return ArrayList de alunos.
      */
-    public ArrayList<Aluno> getAlunos() {
+    public List<Aluno> getAlunos() {
         return alunos;
     }
 
     /**
      * Método de acesso ao ArrayList alunos.
      */
-    public void setAlunos(ArrayList<Aluno> alunos) {
-        this.alunos = alunos;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Turma)) return false;
-
-        Turma turma = (Turma) o;
-
-        return getAlunos() != null ? getAlunos().equals(turma.getAlunos()) : turma.getAlunos() == null;
+    public void setAlunos(Aluno aluno) {
+        this.alunos.add(aluno);
     }
 
 }

@@ -96,15 +96,4 @@ public class Endereco {
         this.complemento = complemento;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Endereco)) return false;
-        Endereco endereco = (Endereco) o;
-        return numero == endereco.numero &&
-                Objects.equals(cep, endereco.cep) &&
-                Objects.equals(logradouro, endereco.logradouro) &&
-                Objects.equals(complemento, endereco.complemento);
-    }
-
 }

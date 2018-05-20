@@ -16,7 +16,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 /**
  * Classe que recupera um arquivo csv e gera um arquivo xml.
@@ -30,12 +29,10 @@ public class Atividade1 {
     public void main(String[] args) {
         String file = "arq.csv";
 
-        ArrayList<Aluno> alunos = null;
-        Aluno aluno = new Aluno();
         Turma turma = new Turma();
 
         try {
-            alunos = recuperar(file, alunos, aluno);
+            turma = recuperar(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -43,8 +40,6 @@ public class Atividade1 {
         }
 
         file = "arq.xml";
-        turma.setAlunos(alunos);
-
         try {
             gerarXml(turma, file);
         } catch (JAXBException e) {
@@ -58,7 +53,7 @@ public class Atividade1 {
      * @param file nome do arquivo a ser gerado no formato XML.
      * @throws JAXBException Lançamento da exeção para tratamento na classe principal.
      */
-    private void gerarXml(Turma turma, String file) throws JAXBException {
+    public static void gerarXml(Turma turma, String file) throws JAXBException {
 
         JAXBContext contexto = JAXBContext.newInstance(Turma.class);
         Marshaller aux = contexto.createMarshaller();
@@ -68,13 +63,10 @@ public class Atividade1 {
 
     /**
      * Método que recebe um arquivo em formato csv e transforma os seus dados em objeto.
-     * @param file Nome do arquivo em formato csv.
-     * @param alunos ArrayList de alunos.
-     * @param aluno Objeto do tipo aluno.
-     * @return ArrayList de alunos.
-     * @throws IOException Lançamento da exeção para tratamento na classe principal.
      */
-    private ArrayList<Aluno> recuperar(String file, ArrayList<Aluno> alunos, Aluno aluno) throws IOException {
+    public static Turma recuperar(String file) throws IOException {
+        Aluno aluno = new Aluno();
+        Turma turma = new Turma();
         Path arqAberto = null;
         char divisor = ';';
         arqAberto = Paths.get(file);
@@ -83,9 +75,9 @@ public class Atividade1 {
             String[] aux = line.split(String.valueOf(divisor));
             aluno.setNome(aux[line.length()-2]);
             aluno.setEmail(aux[line.length()-1]);
-            alunos.add(aluno);
+            turma.setAlunos(aluno);
         }
-        return alunos;
+        return turma;
     }
 
 }

@@ -49,15 +49,4 @@ public class Aluno {
         this.email = email;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Aluno)) return false;
-
-        Aluno aluno = (Aluno) o;
-
-        if (getNome() != null ? !getNome().equals(aluno.getNome()) : aluno.getNome() != null) return false;
-        return getEmail() != null ? getEmail().equals(aluno.getEmail()) : aluno.getEmail() == null;
-    }
-
 }

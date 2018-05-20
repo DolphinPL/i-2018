@@ -42,15 +42,4 @@ public class Calcados {
         this.preco = preco;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Calcados)) return false;
-
-        Calcados calcados = (Calcados) o;
-
-        if (Float.compare(calcados.preco, preco) != 0) return false;
-        return nome != null ? nome.equals(calcados.nome) : calcados.nome == null;
-    }
-
 }

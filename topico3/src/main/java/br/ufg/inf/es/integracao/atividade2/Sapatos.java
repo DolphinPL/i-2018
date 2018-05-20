@@ -57,17 +57,4 @@ public class Sapatos extends Calcados {
         this.blue = blue;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Sapatos)) return false;
-        if (!super.equals(o)) return false;
-
-        Sapatos sapatos = (Sapatos) o;
-
-        if (red != sapatos.red) return false;
-        if (green != sapatos.green) return false;
-        return blue == sapatos.blue;
-    }
-
 }
