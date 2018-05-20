@@ -40,7 +40,7 @@ public class Atividade4 {
     /**
      * Método que serializar o objeto.
      */
-    private static String serializar(Individuo individuo) throws JsonProcessingException {
+    public static String serializar(Individuo individuo) throws JsonProcessingException {
         ObjectMapper objectMapper = new XmlMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         return objectMapper.writeValueAsString(individuo);
@@ -49,10 +49,28 @@ public class Atividade4 {
     /**
      * Método que deserializar uma string e retorna um objeto individuo.
      */
-    private static Individuo deserializar(String xml) throws IOException {
-        XmlMapper mapper = new XmlMapper();
+    public static Individuo deserializar(String xml) throws IOException {
 
-        return mapper.readValue(xml, Individuo.class);
+        if (stringValido(xml)) {
+            XmlMapper mapper = new XmlMapper();
+
+            return mapper.readValue(xml, Individuo.class);
+        } else {
+            throw new IllegalArgumentException("Ops, xml em branco!");
+        }
+    }
+
+    /**
+     * Método que verifica se o nome de um arquivo é valido.
+     * @param string Arquivo xml.
+     * @return True Arquivo não estiver em branco.
+     */
+    private static boolean stringValido(String string) {
+        if (string.equals(null) || string.trim().isEmpty()) {
+            return false;
+        }
+
+        return true;
     }
 
 }

@@ -17,11 +17,13 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * Created by aluno on 14/05/18.
+ * Carrega o conteúdo de um arquivo contendo um documento XML. Após carregar o documento XML, a aplicação deverá
+ * disponibilizar uma lista de calçados, conforme o conteúdo do documento carregado.
  */
 public class Atividade2 {
 
@@ -32,7 +34,7 @@ public class Atividade2 {
 
         try {
             arquivo = recuperarDados(args[0]);
-            crarregarObjetos(arquivo, mapper, sapataria);
+            sapataria = carregarObjetos(arquivo, mapper);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (XMLStreamException e) {
@@ -45,27 +47,39 @@ public class Atividade2 {
     /**
      * Método que carregar os objetos para disponibiliza-los.
      */
-    private static void crarregarObjetos(XMLStreamReader arquivo, XmlMapper mapper, Sapataria sapataria) throws
+    public static Sapataria carregarObjetos(XMLStreamReader arquivo, XmlMapper mapper) throws
             XMLStreamException, IOException {
+        Sapataria sapataria = new Sapataria();
         int aux = arquivo.next();
+        ArrayList<Tenis> tenisAux = new ArrayList<Tenis>();
+        ArrayList<Sapatos> sapatosAux = new ArrayList<Sapatos>();
+        int iTenis = 0;
+        int iSapatos = 0;
         while (aux != XMLStreamConstants.END_DOCUMENT) {
             if (aux == XMLStreamConstants.START_ELEMENT) {
                 String calcados = arquivo.getLocalName();
                 if (calcados.equals("tenis")) {
                     Tenis tenis = mapper.readValue(arquivo, Tenis.class);
-                    sapataria.setTenis(tenis);
+                    tenisAux.add(iTenis, tenis);
+                    iTenis++;
                 } else {
                     Sapatos sapatos = mapper.readValue(arquivo, Sapatos.class);
-                    sapataria.setSapatos(sapatos);
+                    sapatosAux.add(iSapatos, sapatos);
+                    iSapatos++;
                 }
             }
+            aux = arquivo.next();
         }
+        sapataria.setTenis(tenisAux);
+        sapataria.setSapatos(sapatosAux);
+
+        return sapataria;
     }
 
     /**
      * Método que recuperar os dados do arquivo.
      */
-    private static XMLStreamReader recuperarDados(String directory) throws FileNotFoundException, XMLStreamException {
+    public static XMLStreamReader recuperarDados(String directory) throws FileNotFoundException, XMLStreamException {
         if (nomeValido(directory)) {
             FileInputStream aux = new FileInputStream(directory);
             XMLInputFactory factory = XMLInputFactory.newFactory();

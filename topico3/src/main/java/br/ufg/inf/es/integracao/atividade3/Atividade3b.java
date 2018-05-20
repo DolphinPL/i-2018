@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * Classe que dado um documento XML, armazenado em um arquivo, “recupera” a instância da classe Turma nele serializado.
  */
-public class atividade3b {
+public class Atividade3b {
 
     /**
      * Metodo principal de execução do programa.
@@ -47,7 +47,7 @@ public class atividade3b {
     /**
      * Método que criar um objeto apartir dos dados recuperados.
      */
-    private static Turma obterObjeto(XMLStreamReader arquivo, XmlMapper mapper) throws XMLStreamException, IOException {
+    public static Turma obterObjeto(XMLStreamReader arquivo, XmlMapper mapper) throws XMLStreamException, IOException {
         arquivo.next();
 
         return mapper.readValue(arquivo, Turma.class);
@@ -56,7 +56,7 @@ public class atividade3b {
     /**
      * Método que recuperar os dados do arquivo.
      */
-    private static XMLStreamReader recuperarDados(String directory) throws FileNotFoundException, XMLStreamException {
+    public static XMLStreamReader recuperarDados(String directory) throws FileNotFoundException, XMLStreamException {
         if (nomeValido(directory)) {
             FileInputStream aux = new FileInputStream(directory);
             XMLInputFactory factory = XMLInputFactory.newFactory();

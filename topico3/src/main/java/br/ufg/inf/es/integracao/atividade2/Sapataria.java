@@ -6,41 +6,41 @@
 
 package br.ufg.inf.es.integracao.atividade2;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Classe que instancia uma Sapataria.
  */
 public class Sapataria {
 
-    private List<Sapatos> sapatos;
-    private List<Tenis> tenis;
+    private ArrayList<Sapatos> sapatos;
+    private ArrayList<Tenis> tenis;
 
     /**
      * Método de acesso ao atributo Sapato.
      */
-    public List<Sapatos> getSapatos() {
+    public ArrayList<Sapatos> getSapatos() {
         return sapatos;
     }
 
     /**
      * Método de acesso ao atributo Sapato.
      */
-    public void setSapatos(Sapatos sapatos) {
-        this.sapatos.add(sapatos);
+    public void setSapatos(ArrayList<Sapatos> sapatos) {
+        this.sapatos = sapatos;
     }
 
     /**
      * Método de acesso ao atributo Tenis.
      */
-    public List<Tenis> getTenis() {
+    public ArrayList<Tenis> getTenis() {
         return tenis;
     }
 
     /**
      * Método de acesso ao atributo Tenis.
      */
-    public void setTenis(Tenis tenis) {
-        this.tenis.add(tenis);
+    public void setTenis(ArrayList<Tenis> tenis) {
+        this.tenis = tenis;
     }
 }

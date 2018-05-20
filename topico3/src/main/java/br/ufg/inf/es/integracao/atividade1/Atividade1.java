@@ -16,6 +16,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 /**
  * Classe que recupera um arquivo csv e gera um arquivo xml.
@@ -71,12 +72,16 @@ public class Atividade1 {
         char divisor = ';';
         arqAberto = Paths.get(file);
         Charset utf8 = Charset.forName("UTF-8");
+        ArrayList<Aluno> alunoAux = new ArrayList<Aluno>();
+        int i = 0;
         for (String line : Files.readAllLines(arqAberto, utf8)) {
             String[] aux = line.split(String.valueOf(divisor));
-            aluno.setNome(aux[line.length()-2]);
-            aluno.setEmail(aux[line.length()-1]);
-            turma.setAlunos(aluno);
+            aluno.setNome(aux[0]);
+            aluno.setEmail(aux[1]);
+            alunoAux.add(i, aluno);
+            i++;
         }
+        turma.setAlunos(alunoAux);
         return turma;
     }
 

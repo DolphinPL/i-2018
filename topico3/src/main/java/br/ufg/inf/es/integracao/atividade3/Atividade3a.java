@@ -49,7 +49,7 @@ public class Atividade3a {
     /**
      * Método que serializar o objeto.
      */
-    private static String serializar(Turma turma) throws JsonProcessingException {
+    public static String serializar(Turma turma) throws JsonProcessingException {
         ObjectMapper objectMapper = new XmlMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         return objectMapper.writeValueAsString(turma);
@@ -58,7 +58,7 @@ public class Atividade3a {
     /**
      * Método que persiste o objeto.
      */
-    private static void persistir(String xml, String diretory) throws FileNotFoundException, UnsupportedEncodingException {
+    public static void persistir(String xml, String diretory) throws FileNotFoundException, UnsupportedEncodingException {
         if (nomeValido(diretory)) {
             PrintWriter arquivo = new PrintWriter("UTF-8", diretory);
             arquivo.write(xml);

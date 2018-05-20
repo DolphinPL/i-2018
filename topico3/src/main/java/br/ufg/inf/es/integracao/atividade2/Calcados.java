@@ -12,20 +12,20 @@ package br.ufg.inf.es.integracao.atividade2;
 
 public class Calcados {
 
-    private String nome;
+    private String marca;
     private float preco;
     /**
      * Método de acesso ao atributo nome.
      */
-    public String getNome() {
-        return nome;
+    public String getMarca() {
+        return marca;
     }
 
     /**
      * Método de acesso ao atributo nome.
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     /**
