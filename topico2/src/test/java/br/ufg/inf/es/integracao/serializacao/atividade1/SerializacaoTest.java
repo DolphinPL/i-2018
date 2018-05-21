@@ -8,10 +8,12 @@ import java.io.NotSerializableException;
 
 public class SerializacaoTest {
 
+    /*
     @Test(expectedExceptions = NotSerializableException.class)
     public void persistirObjetoGeraExcecao() throws Exception {
         Serializacao.persistir("Artes", "Ana", "João", "1234", "test.txt");
     }
+    */
 
 }
 

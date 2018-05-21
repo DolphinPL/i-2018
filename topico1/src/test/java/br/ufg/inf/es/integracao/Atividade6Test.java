@@ -13,17 +13,17 @@ public class Atividade6Test {
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoInexistenteGeraExcecao() throws Exception {
-        Atividade6.viewToTxt("");
+        Atividade6.returnToTxt("");
     }
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoNomeEmBrancoGeraExcecao() throws Exception {
-        Atividade6.viewToTxt(" ");
+        Atividade6.returnToTxt(" ");
     }
     
     @Test(expected = IllegalArgumentException.class)
     public void arquivoSemNomeGeraExcecao() throws Exception {
-        Atividade6.viewToTxt("");
+        Atividade6.returnToTxt("");
     }
     
 }

@@ -19,38 +19,57 @@ public class Serializacao {
      */
     public static void main(String[] args) {
         try {
-            persistir(args[0], args[1], args[2], args[3], args[4]);
+            persistir(criarObjeto(args[0], args[1], args[2], args[3]) ,args[4]);
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
     /**
-     * Método que serializar um objeto.
+     * Método que criar um objeto do tipo turma
      * @param nomeTurma nome da turma a ser criada.
      * @param nomeProfessor professor da turma.
      * @param nomeAluno nome do aluno.
      * @param matriculaAluno número de matricula de determinado aluno
-     * @param nomeArquivo nome do arquivo onde sera salvo.
-     * @throws IOException caso o nome do arquivo seja invalido.
+     * @return Objeto criado.
      */
-    public static boolean persistir(String nomeTurma, String nomeProfessor, String nomeAluno,
-        String matriculaAluno, String nomeArquivo) throws IOException {
-
-        if (nomeArquivo.equals(null) || nomeArquivo.trim().isEmpty()) {
-            throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
-        }
-
+    private static Turma criarObjeto(String nomeTurma, String nomeProfessor, String nomeAluno,
+                                     String matriculaAluno) {
         Aluno aluno = new Aluno(nomeAluno, matriculaAluno);
         Aluno[] alunos = {aluno};
         Turma turma = new Turma(nomeTurma, nomeProfessor, alunos);
+        return turma;
+    }
 
-        ObjectOutputStream objectOut = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(nomeArquivo)));
-        objectOut.writeObject(turma);
-        objectOut.close();
+    /**
+     * Método que serializar um objeto.
+     * @param turma Objeto a ser serializado e persistido.
+     * @param nomeArquivo nome do arquivo onde sera salvo.
+     * @throws IOException caso o nome do arquivo seja invalido.
+     */
+    public static void persistir(Turma turma, String nomeArquivo) throws IOException {
+
+        if (nomeValido(nomeArquivo)) {
+            ObjectOutputStream objectOut = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(nomeArquivo)));
+            objectOut.writeObject(turma);
+            objectOut.close();
+        } else {
+            throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
+        }
+
+    }
+
+    /**
+     * Método que verifica se o nome de um arquivo é valido.
+     * @param file Nome do arquivo.
+     * @return True nome valido.
+     */
+    private static boolean nomeValido(String file) {
+        if (file.equals(null) || file.trim().isEmpty()) {
+            return false;
+        }
 
         return true;
-
     }
 
 }

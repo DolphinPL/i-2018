@@ -7,7 +7,12 @@
 package br.ufg.inf.es.integracao;
 
 import br.ufg.inf.es.integracao.atividade4.Atividade4;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class Atividade4Test {
     

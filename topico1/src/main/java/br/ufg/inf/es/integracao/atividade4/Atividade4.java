@@ -15,12 +15,11 @@ import java.io.PrintWriter;
 public class Atividade4 {
 	
 	/**
-	 * Método responsável pela interação do programa. 
-	 * @param args[0] nome do arquivo, args[1] dados a serem persistidos.
+	 * Método responsável pela interação do programa.
 	 */
 	public static void main(String[] args) {
 		try {
-	 		persisteDados(args[0], args[1]);
+	 		PrintWriter arq = persisteDados(args[0], args[1]);
 	   	} catch (IOException e) {
 	   		System.out.println(e);
 	   	}
@@ -32,20 +31,31 @@ public class Atividade4 {
 	 * @param dados dados a serem persistidos.
 	 * @throws IOException caso o nome do arquivo esteja em branco.
 	 */
-	public static void persisteDados(String diretory, String dados) throws IOException {
+	public static PrintWriter persisteDados(String diretory, String dados) throws IOException {
 
-    	if (diretory.equals(null) || diretory.equals("") || diretory.equals(" ")) {
-            throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
-    	}
-		
-	if (dados.equals(null) || dados.equals("") || dados.equals(" ")) {
-            throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
-    	}
+    	if (nomeValido(diretory) && nomeValido(dados)) {
+			PrintWriter pw = new PrintWriter(diretory, "UTF-8");
+			pw.write(dados);
+			pw.close();
+			return pw;
+		} else {
+			throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
+		}
     	
-    	PrintWriter pw = new PrintWriter(diretory, "UTF-8");
-    	pw.write(dados);
-    	pw.close();
-    	
+	}
+
+	/**
+	 * Método que verifica se o nome de um arquivo é valido.
+	 * @param file Nome do arquivo.
+	 * @return True nome valido.
+	 */
+	private static boolean nomeValido(String file) {
+
+		if (file.equals(null) || file.equals("") || file.equals(" ")) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }
