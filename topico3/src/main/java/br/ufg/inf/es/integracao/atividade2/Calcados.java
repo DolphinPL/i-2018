@@ -6,10 +6,12 @@
 
 package br.ufg.inf.es.integracao.atividade2;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 /**
  * Classe que instância um Calçado.
  */
-
+@JacksonXmlRootElement(localName = "calcado")
 public class Calcados {
 
     private String marca;

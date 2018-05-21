@@ -6,11 +6,14 @@
 
 package br.ufg.inf.es.integracao.atividade3;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.util.Objects;
 
 /**
  * Classe que descreve o endereço do estudante.
  */
+@JacksonXmlRootElement(localName = "endereco")
 public class Endereco {
 
     private String cep;

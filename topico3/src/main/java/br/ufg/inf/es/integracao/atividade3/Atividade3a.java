@@ -25,12 +25,7 @@ public class Atividade3a {
      * @param args nome do arquivo a ser salvo.
      */
     public static void main(Turma turma, String[] args) {
-//        Endereco endereco = new Endereco("47.999-999", "Rua 2", 12, "Qd: 01");
-//        Estudante estudantes = new Estudante("João de Sousa", 1234, endereco);
-//        ArrayList<Estudante> estudantes = new ArrayList<Estudante>();
-//        estudantes.set(0, estudante1);
 
-//        Turma turma = new Turma("Integração de Aplicação", estudantes);
         String xml = null;
         try {
             xml = serializar(turma);
@@ -60,7 +55,7 @@ public class Atividade3a {
      */
     public static void persistir(String xml, String diretory) throws FileNotFoundException, UnsupportedEncodingException {
         if (nomeValido(diretory)) {
-            PrintWriter arquivo = new PrintWriter("UTF-8", diretory);
+            PrintWriter arquivo = new PrintWriter(diretory, "UTF-8");
             arquivo.write(xml);
             arquivo.close();
         } else {

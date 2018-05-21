@@ -6,13 +6,13 @@
 
 package br.ufg.inf.es.integracao.atividade3;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Classe que dado um documento XML, armazenado em um arquivo, “recupera” a instância da classe Turma nele serializado.
@@ -24,15 +24,9 @@ public class Atividade3b {
      * @param args nome do arquivo xml.
      */
     public static void main(String[] args) {
-
-        XMLStreamReader arquivo = null;
-        XmlMapper mapper = new XmlMapper();
-        Turma turma;
-
+        Turma turma = new Turma();
         try {
-            arquivo = recuperarDados(args[0]);
-            arquivo.next();
-            turma = obterObjeto(arquivo, mapper);
+            turma = obterObjeto(args[0]);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (XMLStreamException e) {
@@ -47,23 +41,31 @@ public class Atividade3b {
     /**
      * Método que criar um objeto apartir dos dados recuperados.
      */
-    public static Turma obterObjeto(XMLStreamReader arquivo, XmlMapper mapper) throws XMLStreamException, IOException {
-        arquivo.next();
+    public static Turma obterObjeto(String directory) throws XMLStreamException, IOException {
+        if (nomeValido(directory)) {
+            File file = new File(directory);
+            XmlMapper mapper = new XmlMapper();
+            String xml = recuperarDados(new FileInputStream(file));
+            Turma turma = mapper.readValue(xml, Turma.class);
 
-        return mapper.readValue(arquivo, Turma.class);
+            return turma;
+        } else {
+            throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
+        }
     }
 
     /**
      * Método que recuperar os dados do arquivo.
      */
-    public static XMLStreamReader recuperarDados(String directory) throws FileNotFoundException, XMLStreamException {
-        if (nomeValido(directory)) {
-            FileInputStream aux = new FileInputStream(directory);
-            XMLInputFactory factory = XMLInputFactory.newFactory();
-            return factory.createXMLStreamReader(aux);
-        } else {
-            throw new IllegalArgumentException("Ops, nome de arquivo é invalido!");
+    public static String recuperarDados(InputStream aux) throws IOException, XMLStreamException {
+        StringBuilder arq = new StringBuilder();
+        String line;
+        BufferedReader br = new BufferedReader(new InputStreamReader(aux));
+        while ((line = br.readLine()) != null) {
+            arq.append(line);
         }
+        br.close();
+        return arq.toString();
     }
 
     /**

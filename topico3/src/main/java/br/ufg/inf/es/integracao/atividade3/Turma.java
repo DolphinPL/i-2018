@@ -7,16 +7,22 @@
 package br.ufg.inf.es.integracao.atividade3;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.List;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import java.util.ArrayList;
 
 /**
  * Classe que instancia uma turma e seus estudantes.
  */
+@JacksonXmlRootElement(localName = "turma")
 public class Turma {
 
     private String disciplina;
-    @JsonProperty("Estudante")
-    private List<Estudante> estudantes;
+    @JacksonXmlElementWrapper(localName = "estudantes")
+    @JacksonXmlProperty(localName = "estudante")
+    private ArrayList<Estudante> estudantes;
 
     /**
      * Método de acesso ao atributo disciplina.
@@ -38,7 +44,7 @@ public class Turma {
      * Método de acesso ao atributo estudante.
      * @return dados do estudante.
      */
-    public List<Estudante> getEstudantes() {
+    public ArrayList<Estudante> getEstudantes() {
         return estudantes;
     }
 
@@ -46,8 +52,8 @@ public class Turma {
      * Método de acesso ao atributo estudante.
      * @param estudantes dados dos estudantes.
      */
-    public void setEstudantes(Estudante estudantes) {
-        this.estudantes.add(estudantes);
+    public void setEstudantes(ArrayList<Estudante> estudantes) {
+        this.estudantes = estudantes;
     }
 
 }
