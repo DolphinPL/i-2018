@@ -36,7 +36,7 @@ public class Atividade3Test {
     public void casoTrivial() throws IOException, XMLStreamException {
         Endereco endereco = new Endereco();
         endereco.setCep("75.000-000");
-        endereco.setLogradouro("Rua 240").
+        endereco.setLogradouro("Rua 240");
         endereco.setNumero(00);
         endereco.setComplemento("Qd: 12 Lt: 20");
 
