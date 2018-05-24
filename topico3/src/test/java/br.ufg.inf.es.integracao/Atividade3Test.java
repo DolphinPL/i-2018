@@ -34,14 +34,21 @@ public class Atividade3Test {
 
     @Test
     public void casoTrivial() throws IOException, XMLStreamException {
-        Endereco endereco = new Endereco("75.000-000", "Rua 240", 00, "Qd: 12 Lt: 20");
+        Endereco endereco = new Endereco();
+        endereco.setCep("75.000-000");
+        endereco.setLogradouro("Rua 240").
+        endereco.setNumero(00);
+        endereco.setComplemento("Qd: 12 Lt: 20");
 
         Assert.assertEquals("75.000-000", endereco.getCep());
         Assert.assertEquals("Rua 240", endereco.getLogradouro());
         Assert.assertEquals(00, endereco.getNumero());
         Assert.assertEquals("Qd: 12 Lt: 20", endereco.getComplemento());
 
-        Estudante estudante = new Estudante("Antonio", 5565, endereco);
+        Estudante estudante = new Estudante();
+        estudante.setNome("Antonio");
+        estudante.setMatricula(5565);
+        estudante.setEndereco(endereco);
 
         Assert.assertEquals("Antonio", estudante.getNome());
         Assert.assertEquals(5565, estudante.getMatricula());
