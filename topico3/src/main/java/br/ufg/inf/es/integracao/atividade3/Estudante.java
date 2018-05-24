@@ -19,18 +19,6 @@ public class Estudante {
     private Endereco endereco;
 
     /**
-     * Método construtor da classe Estudanye.
-     * @param nome do estudante.
-     * @param matricula do estudante.
-     * @param endereco do estudante.
-     */
-    public Estudante(String nome, int matricula, Endereco endereco) {
-        this.nome = nome;
-        this.matricula = matricula;
-        this.endereco = endereco;
-    }
-
-    /**
      * Método de acesso ao atributo nome.
      * @return nome do estudante.
      */
