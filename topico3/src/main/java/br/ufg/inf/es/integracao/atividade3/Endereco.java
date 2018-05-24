@@ -22,20 +22,6 @@ public class Endereco {
     private String complemento;
 
     /**
-     * Método construtor da classe Endereço.
-     * @param cep cep do endereço.
-     * @param logradouro nome da rua.
-     * @param numero numero da residencia.
-     * @param complemento complemento do endereço.
-     */
-    public Endereco(String cep, String logradouro, int numero, String complemento) {
-        this.cep = cep;
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.complemento = complemento;
-    }
-
-    /**
      * Método de acesso ao atributo cep.
      * @return cep do estudante.
      */
