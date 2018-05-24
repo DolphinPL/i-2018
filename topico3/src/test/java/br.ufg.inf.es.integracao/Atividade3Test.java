@@ -68,7 +68,7 @@ public class Atividade3Test {
 
         Atividade3a.persistir(xml, "test.xml");
 
-        //Atividade3b.obterObjeto("test.xml");
+        Atividade3b.obterObjeto("test.xml");
 
 
 
