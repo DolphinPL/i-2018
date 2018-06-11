@@ -27,27 +27,50 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
+    /**
+     * Método responsável por listar todos os pacientes cadastrado na base de dados.
+     * @return http: cod 200 e list de pacientes.
+     */
     @GetMapping
     public ResponseEntity<List<Individuo>> listarTodos() {
         return ResponseEntity.ok(this.pacienteService.listarTodos());
     }
 
+    /**
+     * Método que lista um paciente especifico quando encontrado.
+     * @param id retirado da url passado.
+     * @return http: cod 200 e os dados do paciente quando encontrado.
+     */
     @GetMapping(path = "/{id}")
     public ResponseEntity<Individuo> listarPorId(@PathVariable(name = "id") String id) {
         return ResponseEntity.ok(this.pacienteService.listarPorId(id));
     }
 
+    /**
+     * Método que persiste os dados de um paciente.
+     * @param paciente dados do paciente.
+     * @return http: cod 200 e o paciente cadastrado.
+     */
     @PostMapping
     public ResponseEntity<Individuo> cadastrar(@RequestBody Individuo paciente) {
         return ResponseEntity.ok(this.pacienteService.cadastrar(paciente));
     }
 
+    /**
+     * Metodo que realiza a atualização dos dados de um paciente.
+     * @param id retirado da url passado.
+     * @param paciente dados do paciente.
+     */
     @PutMapping(path = "/{id}")
     public ResponseEntity<Individuo> atualizar(@PathVariable(name = "id") String id, Individuo paciente) {
         paciente.setId(id);
         return ResponseEntity.ok(this.pacienteService.atualizar(paciente));
     }
 
+    /**
+     * Método que remove um paciente.
+     * @param id retirado da url passado.
+     */
     @DeleteMapping(path = "/{id}")
     public void remover(@PathVariable(name = "id") String id) {
         this.pacienteService.remover(id);
