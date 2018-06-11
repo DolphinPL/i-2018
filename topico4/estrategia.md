@@ -2,7 +2,7 @@
 | Tópico                                             | Status                |
 |----------------------------------------------------|-----------------------|
 |Escolher o Banco                                    |     Concluído         |
-|Usar um cliente para conexão com o banco            |     Em andamento      |
-|Montar o esquema definido                           |     Pendente          |
-|Executar operações necessárias                      |     Pendente          |
-|Escrever o código em java que execute as operação   |     Pendente          |
+|Usar um cliente para conexão com o banco            |     Concluído      |
+|Montar o esquema definido                           |     Concluído          |
+|Executar operações necessárias                      |     Concluído          |
+|Escrever o código em java que execute as operação   |     Concluído          |
